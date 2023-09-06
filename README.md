@@ -1,2 +1,7 @@
-# Team03_Frontend_OurSpace_Groups
-Ük-223, The Frontend of Team 03 
+# uk223 Skeleton
+
+homepage: http://localhost:3000
+login: http://localhost:3000/login
+user component: http://localhost:3000/users
+
+## Components
