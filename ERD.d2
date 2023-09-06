@@ -1,0 +1,78 @@
+text: |md
+# ERD Diagram
+
+This is the ERD Diagram for the Project
+|
+
+users: {
+    shape: sql_table
+    id: UUID { constraint: primary_key }
+    first_name: VARCHAR(255) { constraint: NN }
+    last_name: VARCHAR(255) { constraint: NN }
+    email: VARCHAR(255) { constraint: unique }
+    password: VARCHAR(255) { constraint: NN }
+    role_id: {constraint: [foreign_key; NN]}
+    group_id: UUID { constraint: foreign_key }
+}
+
+role: {
+    shape: sql_table
+    id: UUID {constraint: primary_key}
+    name: VARCHAR(255) { constraint: unique }
+    authority_id:  {constraint: [foreign_key; NN]}
+}
+
+authority: {
+    shape: sql_table
+    id: UUID {constraint: primary_key}
+    name: VARCHAR(255) {constraint: unique}
+}
+
+groups: {
+    shape: sql_table
+    id: UUID {constraint: primary_key}
+    name: VARCHAR(255) {constraint: NN}
+    description: VARCHAR(255)
+    motto: VARCHAR(255)
+    logo: VARCHAR(255)
+}
+
+users_roles: {
+    shape: sql_table
+    user_id: UUID {constraint: foreign_key}
+    role_id: UUID {constraint: foreign_key}
+}
+
+roles_authority: {
+    shape: sql_table
+    role_id: UUID {constraint: foreign_key}
+    auhtority_id: UUID {constraint: foreign_key}
+}
+
+#users <-> role: Many to Many {
+#    source-arrowhead.label: *
+#    target-arrowhead.label: *
+#}
+#role <-> authority: Many to Many
+users <-> users_roles: One to Many {
+    target-arrowhead.label: 1..*
+    source-arrowhead.label: 1
+}
+users_roles <-> role: Many to One {
+    target-arrowhead.label: 1
+    source-arrowhead.label: 1..*
+}
+
+role <-> roles_authority: One to Many{
+    target-arrowhead.label: 1..*
+    source-arrowhead.label: 1
+}
+roles_authority <-> authority: Many to One {
+    target-arrowhead.label: 1
+    source-arrowhead.label: 1..*
+}
+
+users ->  groups: One to Many {
+    target-arrowhead.label: 0..1
+    source-arrowhead.label: *
+}
