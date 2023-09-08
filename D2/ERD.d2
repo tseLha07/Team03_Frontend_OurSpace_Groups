@@ -37,6 +37,12 @@ groups: {
     logo: VARCHAR(255)
 }
 
+groups_roles: {
+    shape: sql_table
+    group_id: UUID {constraint: foreign_key}
+    user_id: UUID {constraint: foreign_key}
+}
+
 users_roles: {
     shape: sql_table
     user_id: UUID {constraint: foreign_key}
@@ -50,21 +56,67 @@ roles_authority: {
 }
 
 users <-> users_roles: One to Many {
-    target-arrowhead.label: 1..*
-    source-arrowhead.label: 1
+    target-arrowhead {
+        label: 1..*
+        shape: cf-many
+    }
+    source-arrowhead {
+        label: "1"
+        shape: cf-one-required
+    }
 }
 users_roles <-> role: Many to One {
-    target-arrowhead.label: 1
-    source-arrowhead.label: 1..*
+    source-arrowhead {
+        label: 1..*
+        shape: cf-many
+    }
+    target-arrowhead {
+        label: "1"
+        shape: cf-one-required
+    }
 }
 
 role <-> roles_authority: One to Many{
-    target-arrowhead.label: 1..*
-    source-arrowhead.label: 1
+    target-arrowhead {
+        label: 1..*
+        shape: cf-many
+    }
+    source-arrowhead {
+        label: "1"
+        shape: cf-one-required
+    }
 }
 roles_authority <-> authority: Many to One {
-    target-arrowhead.label: 1
-    source-arrowhead.label: 1..*
+    source-arrowhead {
+        label: 1..*
+        shape: cf-many
+    }
+    target-arrowhead {
+        label: "1"
+        shape: cf-one-required
+    }
+}
+
+users <-> groups_roles: One to One {
+    target-arrowhead{
+        label: 0..1
+        shape: cf-one
+    }
+    source-arrowhead{
+        label: 0..1
+        shape: cf-one
+    }
+}
+
+groups <-> groups_roles: One to Many {
+    source-arrowhead{
+        label: 0..1
+        shape: cf-one
+    }
+    target-arrowhead{
+        label: *
+        shape: cf-many
+    }
 }
 
 users <->  groups: One to Many {
