@@ -7,6 +7,6 @@ export type User = {
   password: string;
   firstName: string;
   lastName: string;
-  group: Group;
+  group?: Group;
   roles: Role[];
 };

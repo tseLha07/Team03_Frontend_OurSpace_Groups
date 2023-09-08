@@ -12,6 +12,7 @@ const UserPage = () => {
     firstName: '',
     lastName: '',
     email: '',
+    password: '',
     roles: [],
   });
 
