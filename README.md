@@ -1,12 +1,14 @@
-# uk223 Front-End React
+# üK 223 Front-End React
+
+This is one part of the Frontend Software. This is the Frontend Part using React. The Testing is made with cypress and using yarn as the main package manager
 
 ## Installation
 
 ### Prerequisites
 
 - Docker Installed
-- Postgres Docker Container running
-- [The backend Code running](https://github.com/tseLha07/Team03_Backend_OurSpace_Groups)
+- Postgres Docker Container running (see below)
+- [The backend Code running](https://github.com/tseLha07/Team03_Backend_OurSpace_Groups) (instructions on docker as well)
 
 ### install Node.js & yarn
 
@@ -53,3 +55,5 @@ yarn install
 ```bash
 yarn start
 ```
+
+after some time, it should open the Project on your browser on port 3000
