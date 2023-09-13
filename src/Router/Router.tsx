@@ -20,7 +20,7 @@ const Router = () => {
       <Route path={"/login"} element={<LoginPage />} />
 
       <Route
-        path={"/users/:groupId"}
+        path={"/:groupId/userDetails"}
         element={<PrivateRoute authorities={[]} element={<UserTable />} />}
       />
       <Route
