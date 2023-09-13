@@ -3,6 +3,7 @@ import { User } from '../../../types/models/User.model';
 import { Box, Button, TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { object, string } from 'yup';
+import { group } from 'console';
 
 interface UserProps {
   user: User;
@@ -71,18 +72,19 @@ const UserForm = ({ user, submitActionHandler }: UserProps) => {
             error={Boolean(formik.touched.email && formik.errors.email)}
             value={formik.values.email}
           />
-
           {formik.errors.email && formik.touched.email ? (
             <div style={{ color: 'red' }}>{formik.errors.email}</div>
           ) : null}
         </Box>
         <div>
           <Button
+            /*component="button"*/
             sx={{ marginTop: '15px', marginRight: '10px' }}
             variant='contained'
             color='success'
             type='submit'
             disabled={!(formik.dirty && formik.isValid)}
+            onClick={() => formik.handleSubmit}
           >
             {user.id && 'Save'}
             {!user.id && 'Add'}
@@ -92,7 +94,7 @@ const UserForm = ({ user, submitActionHandler }: UserProps) => {
             variant='contained'
             color='error'
             onClick={() => {
-              navigate('/users');
+              navigate(-1);
             }}
           >
             Cancel

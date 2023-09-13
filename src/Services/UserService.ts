@@ -7,6 +7,10 @@ const UserService = {
     return data;
   },
 
+  getUserFromGroup: async (groupId : string, p = 0, i = 5)  => {
+    return api.get(`/user/group/${groupId}?p=${p}&i=${i}`)
+  },
+
   updateUser: (user: User) => {
     return api.put(`/user/${user.id}`, user);
   },

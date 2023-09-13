@@ -16,7 +16,11 @@ const Router = () => {
 
   return (
     <Routes>
-      <Route path={"/"} element={<HomePage />} />
+      <Route 
+        path={"/"}
+        element={<PrivateRoute authorities={[]} element={<HomePage />}  />}
+      />
+      
       <Route path={"/login"} element={<LoginPage />} />
 
       <Route
