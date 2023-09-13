@@ -1,15 +1,13 @@
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import { useEffect, useState } from "react";
 import { User } from "../../../types/models/User.model";
 import UserService from "../../../Services/UserService";
 import { useNavigate, useParams } from "react-router-dom";
+import AddIcon from '@mui/icons-material/Add';
 import MenuAppBar from "../../organisms/AppBar";
 import {
   ButtonGroup,
-  Container,
+  IconButton,
   Paper,
   Table,
   TableBody,
@@ -17,6 +15,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Typography,
 } from "@mui/material";
 
 const UserTable = () => {
@@ -33,7 +32,7 @@ const UserTable = () => {
   }, []);
 
   const handleAdd = () => {
-    navigate("../useredit/");
+    navigate("/adduser");
   };
 
   const handleEdit = (id: string) => {
@@ -49,7 +48,17 @@ const UserTable = () => {
   return (
     <>
       <MenuAppBar />
-
+      <Typography
+          sx={{ flex: '1 1 100%' }}
+          variant="h6"
+          id="tableTitle"
+          component="div"
+        >
+          User's Dashboard
+        </Typography>
+      <IconButton onClick={handleAdd}>
+        <AddIcon />
+      </IconButton>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -96,9 +105,6 @@ const UserTable = () => {
         </Table>
       </TableContainer>
         <ButtonGroup variant="text">
-          <Button onClick={handleAdd}>
-            Add Users
-          </Button>
           <Button onClick={() => navigate(-1)}>
             Back
           </Button>

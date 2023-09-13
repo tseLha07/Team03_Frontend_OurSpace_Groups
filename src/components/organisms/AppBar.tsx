@@ -5,20 +5,32 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import ActiveUserContext from '../../Contexts/ActiveUserContext';
 import { useContext } from 'react';
+import { styled } from '@mui/material/styles';
+import Button, { ButtonProps } from '@mui/material/Button';
+import { purple } from '@mui/material/colors';
+import { useNavigate } from 'react-router-dom';
+
+const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
+  color: theme.palette.primary.light,
+  backgroundColor: 'black',
+  borderRadius: 20,
+  fontFamily: 'sans-serif',
+  fontWeight: 200,
+  '&:hover': {
+    backgroundColor: 'grey',
+  },
+}));
+
 
 export default function MenuAppBar() {
 
+  const navigate = useNavigate();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAuth(event.target.checked);
-  };
 
   const activeUserContext = useContext(ActiveUserContext);
 
@@ -38,6 +50,15 @@ export default function MenuAppBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Groups
           </Typography>
+          <ColorButton style={{marginRight: 10}} onClick={() => navigate("/")}>
+          Home
+          </ColorButton>
+          <ColorButton style={{marginRight: 10}} onClick={() => navigate("/groupList")}>
+            All Groups
+          </ColorButton>
+          <ColorButton style={{marginRight: 10}} onClick={() => navigate("/allusers")}>
+            All Users
+          </ColorButton>
           {auth && (
             <div>
               <IconButton

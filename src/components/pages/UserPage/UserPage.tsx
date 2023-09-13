@@ -13,6 +13,8 @@ const UserPage = () => {
     lastName: '',
     email: '',
     password: '',
+    group_id: '',
+    group_name: '',
     roles: [],
   });
 
@@ -27,7 +29,7 @@ const UserPage = () => {
   }, [userId]);
 
   const submitActionHandler = (values: User) => {
-    if (userId === undefined) {
+    if (userId !== undefined) {
       UserService.updateUser(values).then(() => {
         navigate(-1);
       });
