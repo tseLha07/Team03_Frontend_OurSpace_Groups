@@ -15,7 +15,7 @@ describe('Admin logs in', () => {
 
     it('should successfully navigate', () => {
         cy.wait(2000);
-        cy.visit('http://localhost:3000/4173b16c-6124-49c0-a29f-254dca05e5fe/userDetails');
+        cy.visit('http://localhost:3000/users/4173b16c-6124-49c0-a29f-254dca05e5fe');
     });
 
     it('should successfully change membership', () => {
