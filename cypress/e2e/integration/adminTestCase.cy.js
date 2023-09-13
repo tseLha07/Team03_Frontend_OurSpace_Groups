@@ -15,11 +15,22 @@ describe('Admin logs in', () => {
 
     it('should successfully navigate', () => {
         cy.wait(2000);
-        cy.visit('http://localhost:3000/4173b16c-6124-49c0-a29f-254dca05e5fe/userDetails', { failOnStatusCode: false });
+        cy.visit('http://localhost:3000/4173b16c-6124-49c0-a29f-254dca05e5fe/userDetails');
     });
 
     it('should successfully change membership', () => {
+        const firstName = 'Daniel';
+        const lastName = 'Craig';
+        const email = 'craigdaniel@mail.com';
+        
+        cy.wait(2000);
+        cy.contains('Add').click();
 
+        cy.get('input[placeholder="Firstname"]').type(firstName);
+        cy.get('input[placeholder="Lastname"]').type(lastName);
+        cy.get('input[placeholder="E-mail"]').type(email);
+
+        cy.contains('Add').click();
     });
 
     it('should successfully redirect', () => {
