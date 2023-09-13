@@ -5,16 +5,20 @@ import Button from '@mui/material/Button';
 import { useEffect, useState } from 'react';
 import { User } from '../../../types/models/User.model';
 import UserService from '../../../Services/UserService';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const UserTable = () => {
+  const {groupId} = useParams();
   const navigate = useNavigate();
   const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
-    UserService.getAllUsers().then((data) => {
-      setUsers(data.data);
-    });
+    if (groupId !== undefined){
+      UserService.getUserFromGroup(groupId).then((data) => {
+        setUsers(data.data);
+      });
+    }
+    
   }, []);
 
   const handleAdd = () => {
@@ -26,7 +30,7 @@ const UserTable = () => {
   };
 
   const handleDelete = (id: string) => {
-    UserService.deleteUser(id);
+    UserService.deleteUser(id).then(() => setUsers(users.filter((user) => user.id == id)))
   };
 
   return (
@@ -59,12 +63,12 @@ const UserTable = () => {
         </div>
       ))}
       <Button
-        size='small'
-        color='success'
-        variant='contained'
         onClick={handleAdd}
       >
         Add
+      </Button>
+      <Button onClick={() => navigate('../')}>
+        Home
       </Button>
     </>
   );

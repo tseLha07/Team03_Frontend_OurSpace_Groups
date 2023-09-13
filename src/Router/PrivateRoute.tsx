@@ -4,7 +4,6 @@ import * as jwt from 'jsonwebtoken';
 import ActiveUserContext from '../Contexts/ActiveUserContext';
 import AuthorityService from '../Services/AuthorityService';
 import { Authority } from '../types/models/Authority.model';
-import { Button } from '@mui/material';
 
 interface Props {
   element: React.ReactElement;
@@ -67,7 +66,6 @@ const PrivateRoute: React.FC<Props> = ({
   return (
     //Pagelayout puts the Navigation, Menu etc. around the component
     <div>
-      <Button onClick={activeUserContext.logout}>Logout</Button>
       {RouteComponent}
     </div>
   );
