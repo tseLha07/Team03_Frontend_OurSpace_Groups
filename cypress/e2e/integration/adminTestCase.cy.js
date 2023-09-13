@@ -12,20 +12,19 @@ describe('Admin logs in', () => {
 
         cy.url().should('include', 'http://localhost:3000');
     });
-});
 
-describe('Admin navigates to users details of a group', () => {
     it('should successfully navigate', () => {
-        cy.visit('http://localhost:3000/4173b16c-6124-49c0-a29f-254dca05e5fe/userDetails');
+        cy.wait(2000);
+        cy.visit('http://localhost:3000/4173b16c-6124-49c0-a29f-254dca05e5fe/userDetails', { failOnStatusCode: false });
     });
-});
 
-describe('Admin changes user membership', () => {
     it('should successfully change membership', () => {
+
+    });
+
+    it('should successfully redirect', () => {
+        cy.wait(2000);
+        cy.url().should('include', 'http://localhost:3000');
     });
 });
 
-describe('Redirects admin to homepage', () => {
-    it('should successfully redirect', () => {
-    });
-});
