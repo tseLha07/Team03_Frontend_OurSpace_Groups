@@ -24,6 +24,6 @@ describe('User Login', () => {
 
         cy.contains('Sign in').click();
 
-        cy.contains('invalid login');
+        cy.contains('invalid login').should('be.visible');
     })
 })
