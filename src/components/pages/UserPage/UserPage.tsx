@@ -27,13 +27,13 @@ const UserPage = () => {
   }, [userId]);
 
   const submitActionHandler = (values: User) => {
-    if (userId !== undefined) {
+    if (userId === undefined) {
       UserService.updateUser(values).then(() => {
-        navigate('../users/:groupId');
+        navigate(-1);
       });
     } else {
       UserService.addUser(values).then(() => {
-        navigate('/users/:groupId');
+        navigate(-1);
       });
     }
   };

@@ -3,7 +3,6 @@ import { User } from '../../../types/models/User.model';
 import { Box, Button, TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { object, string } from 'yup';
-import { group } from 'console';
 
 interface UserProps {
   user: User;
@@ -29,6 +28,7 @@ const UserForm = ({ user, submitActionHandler }: UserProps) => {
     }),
     onSubmit: (values: User) => {
       submitActionHandler(values);
+      navigate(-1);
     },
     enableReinitialize: true,
   });

@@ -11,6 +11,7 @@ export default function HomePage() {
   const navigate = useNavigate();
   const [groupList, setGroupList] = useState<Group[]>([]); 
 
+
   useEffect(() => {
     GroupService()
     .getAllGroups()
@@ -40,11 +41,10 @@ export default function HomePage() {
             
             <div>
               <img src={group.logo} style={{height: 50, width: 50}}/><br />
-              Id-Nr. = {group.id}, <br />
               Name = {group.name}, <br />
               Description = {group.description}, <br />
               Motto = {group.motto}, <br />
-              <Button onClick={() => navigate("/users/" + group.id )}>users</Button>
+              <Button onClick={() => navigate("/users/dashboard/" + group.id )}>users</Button>
             </div>
             </>
           )
