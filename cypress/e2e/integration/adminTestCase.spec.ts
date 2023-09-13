@@ -1,6 +1,6 @@
 import 'cypress';
 
-describe('User logs in', () => {
+describe('Admin logs in', () => {
     it('should successfully log in', () => {
         const email = 'admin@example.com';
         const password = '1234';
@@ -17,10 +17,14 @@ describe('User logs in', () => {
 
 });
 
-describe('User navigates to group list', () => {
+describe('Admin navigates to users details of a group', () => {
 
 });
 
-describe('User navigates to the user list', () => {
+describe('Admin changes user membership', () => {
 
 });
+
+describe('Redirects admin to homepage', () => {
+
+})
