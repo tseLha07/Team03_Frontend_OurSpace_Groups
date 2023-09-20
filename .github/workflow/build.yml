@@ -1,4 +1,4 @@
-name: Frontend Build
+name: Frontend Workflow
 
 on:
   push:
@@ -6,7 +6,14 @@ on:
       - main
 
 jobs:
-  build:
+  hello_world:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print Hello World
+        run: echo "Hello World!"
+
+  frontend_build:
     runs-on: ubuntu-latest
 
     steps:
