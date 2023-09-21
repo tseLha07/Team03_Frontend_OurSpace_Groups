@@ -1,4 +1,3 @@
-import { Group } from './Group';
 import { Role } from './Role.model';
 
 export type User = {
@@ -7,6 +6,7 @@ export type User = {
   password: string;
   firstName: string;
   lastName: string;
-  group?: Group;
+  group_id: string,
+  group_name: string,
   roles: Role[];
 };

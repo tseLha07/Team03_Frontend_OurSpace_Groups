@@ -20,11 +20,14 @@ const UserForm = ({ user, submitActionHandler }: UserProps) => {
       email: user ? user.email : '',
       password: user ? user.password : '',
       roles: user ? user.roles : [],
+      group_id: '',
+      group_name: ''
     },
     validationSchema: object({
       firstName: string().required().min(2).max(50),
       lastName: string().required().min(2).max(50),
       email: string().required().email(),
+      password: string().required()
     }),
     onSubmit: (values: User) => {
       submitActionHandler(values);
@@ -67,6 +70,7 @@ const UserForm = ({ user, submitActionHandler }: UserProps) => {
             id='email'
             label='E-Mail'
             variant='outlined'
+            sx={{ paddingRight: '10px' }}
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             error={Boolean(formik.touched.email && formik.errors.email)}
@@ -75,6 +79,16 @@ const UserForm = ({ user, submitActionHandler }: UserProps) => {
           {formik.errors.email && formik.touched.email ? (
             <div style={{ color: 'red' }}>{formik.errors.email}</div>
           ) : null}
+          <TextField
+            id='password'
+            label='password'
+            variant='outlined'
+            sx={{ paddingRight: '10px' }}
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            error={Boolean(formik.touched.password && formik.errors.password)}
+            value={formik.values.password}
+          />
         </Box>
         <div>
           <Button

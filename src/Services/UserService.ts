@@ -16,7 +16,7 @@ const UserService = {
   },
 
   addUser: (user: User) => {
-    return api.post('/user/registerUser', user).then((res) => {
+    return api.post('/user/register', user).then((res) => {
       return res.data;
     });
   },
